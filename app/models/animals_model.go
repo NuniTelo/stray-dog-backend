@@ -36,6 +36,17 @@ type GetAnimalListStruct struct {
 	ChipDate          *time.Time      `db:"chip_date" json:"chip_date"`
 	Name              *string         `db:"username" json:"username"`
 	UserId            *int            `db:"user_id" json:"user_id"`
+	Chipped           *bool           `db:"chipped" json:"chipped"`
+	ChipNumber        *string         `db:"chip_number" json:"chip_number"`
+	ParvoVaccine      *string         `db:"parvo_vaccine" json:"parvo_vaccine"`
+	DistemperVaccine  *string         `db:"distemper_vaccine" json:"distemper_vaccine"`
+	RabiesVaccine     *string         `db:"rabies_vaccine" json:"rabies_vaccine"`
+	InShelter         bool            `db:"in_shelter" json:"in_shelter"`
+	SterilizationDate *string         `db:"sterilization_date" json:"sterilization_date"`
+	Breed             string          `db:"breed" json:"breed"`
+	IsAlive           bool            `db:"is_alive" json:"is_alive"`
+	DeathDate         *string         `db:"death_date" json:"death_date"`
+	DeathCause        *string         `db:"death_cause" json:"death_cause"`
 	Images            json.RawMessage `db:"images" json:"images"`
 }
 
