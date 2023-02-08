@@ -114,12 +114,16 @@ func CreateAnimal(c *fiber.Ctx) error {
 		})
 	}
 
-	if err := db.AnimalQueries.CreateAnimalQuery(animal, id); err != nil {
+	animalId, err := db.AnimalQueries.CreateAnimalQuery(animal, id)
+
+	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"error": true,
 			"msg":   err.Error(),
 		})
 	}
+
+	animal.Id = &animalId
 
 	return c.JSON(fiber.Map{
 		"animal": animal,

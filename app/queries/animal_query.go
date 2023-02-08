@@ -97,7 +97,7 @@ func (q *AnimalQueries) GetAnimalsCreatedByUser(page int, limit int, userId *int
 /*
 Insert a new animal to the database.
 */
-func (q *AnimalQueries) CreateAnimalQuery(a *models.Animal, id *int8) error {
+func (q *AnimalQueries) CreateAnimalQuery(a *models.Animal, id *int8) (int8, error) {
 	query := `INSERT INTO "public"."animal" 
 		(
 			"origin",
@@ -165,7 +165,7 @@ func (q *AnimalQueries) CreateAnimalQuery(a *models.Animal, id *int8) error {
 	).Scan(&animalId)
 
 	if err != nil {
-		return err
+		return animalId, err
 	}
 
 	if a.Images != nil {
@@ -175,7 +175,7 @@ func (q *AnimalQueries) CreateAnimalQuery(a *models.Animal, id *int8) error {
 		}
 		tx.Commit()
 	}
-	return nil
+	return animalId, err
 }
 
 /*

@@ -6,6 +6,7 @@ import (
 )
 
 type Animal struct {
+	Id                *int8     `db:"id" json:"id"`
 	Origin            string    `db:"origin" json:"origin"`
 	Gender            string    `db:"gender" json:"gender"`
 	Age               int64     `db:"age" json:"age"`
